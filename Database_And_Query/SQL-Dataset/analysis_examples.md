@@ -52,25 +52,3 @@ WHERE salary > 60000 AND branch_id = 2;
 
 ---
 
-## **3. Example with Another Table**
-
-### **From the `branch_supplier` Table**
-
-#### **Example 1**: Display all suppliers providing 'Paper'
-```sql
-SELECT supplier_name, supply_type
-FROM branch_supplier
-WHERE supply_type = 'Paper';
-```
-**Output**: This query retrieves the names of suppliers and the supply type for those who provide 'Paper'.
-
-#### **Example 2**: Filter for suppliers linked to branch ID 3
-```sql
-SELECT supplier_name, branch_id
-FROM branch_supplier
-WHERE branch_id = 3;
-```
-**Output**: This query retrieves the names of suppliers and the branch ID for suppliers linked to branch ID 3.
-
----
-
