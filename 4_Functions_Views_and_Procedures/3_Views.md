@@ -1,4 +1,4 @@
-### ** Views**
+###  Views
 Views are virtual tables created by a SELECT query. They simplify complex queries and abstract database logic.
 
 #### **Example:** Create a view for high-value orders.
