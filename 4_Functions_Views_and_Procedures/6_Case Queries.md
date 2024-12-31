@@ -1,4 +1,5 @@
-#### **Case 1:** Source sessions before 2012-04-13.
+#### Case 1:
+ Source sessions before 2012-04-13.
 ```sql
 SELECT utm_source, utm_campaign, http_referer, COUNT(DISTINCT website_session_id) AS n_session
 FROM website_sessions
@@ -7,7 +8,7 @@ GROUP BY 1, 2, 3
 ORDER BY 4 DESC;
 ```
 
-#### **Case 2:** CVR (Conversion Rate) for `gsearch` source before 2012-04-14.
+#### Case 2: CVR (Conversion Rate) for `gsearch` source before 2012-04-14.
 ```sql
 SELECT COUNT(DISTINCT ws.website_session_id) AS n_session,
        COUNT(DISTINCT order_id) AS n_order,
@@ -17,7 +18,7 @@ LEFT JOIN orders o USING (website_session_id)
 WHERE ws.created_at < '2012-04-14' AND utm_source = 'gsearch' AND utm_campaign = 'nonbrand';
 ```
 
-#### **Case 3:** Weekly session count before 2012-05-11.
+#### Case 3: Weekly session count before 2012-05-11.
 ```sql
 SELECT EXTRACT('week' FROM created_at) AS week,
        MIN(created_at) AS start_date,
@@ -28,7 +29,7 @@ GROUP BY 1
 ORDER BY 1;
 ```
 
-#### **Case 4:** CVR by device type before 2012-05-12.
+#### Case 4: CVR by device type before 2012-05-12.
 ```sql
 SELECT device_type,
        COUNT(ws.website_session_id) AS n_session,
@@ -40,7 +41,7 @@ WHERE ws.created_at < '2012-05-12' AND utm_source = 'gsearch' AND utm_campaign =
 GROUP BY device_type;
 ```
 
-#### **Case 5:** Most viewed pages before 2012-06-10.
+#### Case 5: Most viewed pages before 2012-06-10.
 ```sql
 SELECT pv.pageview_url, COUNT(pv.website_session_id) AS n_session
 FROM website_pageviews pv
@@ -49,7 +50,7 @@ GROUP BY 1
 ORDER BY 2 DESC;
 ```
 
-#### **Case 6:** First page view counts before 2012-06-13.
+#### Case 6:First page view counts before 2012-06-13.
 ```sql
 WITH first_page AS (
     SELECT website_session_id,
@@ -64,7 +65,7 @@ JOIN website_pageviews USING (website_pageview_id)
 GROUP BY 1;
 ```
 
-#### **Case 7:** Bounce rate calculation before 2012-06-14.
+#### Case 7: Bounce rate calculation before 2012-06-14.
 ```sql
 WITH is_bounce AS (
     SELECT website_session_id,
@@ -81,7 +82,7 @@ FROM is_bounce;
 
 ---
 
-### **Summary**
+### Summary
 - **Functions:** Reusable SQL code blocks for scalar or table-valued results.
 - **System-Defined Functions:** Predefined functions for strings, dates, and aggregation.
 - **Views:** Simplify complex queries with virtual tables.

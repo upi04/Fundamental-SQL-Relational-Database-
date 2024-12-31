@@ -1,4 +1,4 @@
-### ** Procedures**
+###  Procedures
 Stored procedures encapsulate SQL statements for reuse, enabling parameterized execution and better performance.
 
 #### **Creating a Procedure:**

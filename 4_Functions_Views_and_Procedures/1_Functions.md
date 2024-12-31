@@ -1,4 +1,4 @@
-### ** Functions**
+###  Functions
 Functions are reusable SQL code blocks that can perform operations and return results. Functions can be scalar (return a single value) or table-valued (return a table).
 
 #### **Example:**

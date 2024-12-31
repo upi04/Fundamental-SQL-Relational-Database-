@@ -1,7 +1,7 @@
-### ** Joins**
+###  Joins
 Joins are used to combine data from two or more tables based on related columns.
 
-#### **Types of Joins:**
+#### Types of Joins:
 - **INNER JOIN:** Returns records with matching values in both tables.
   ```sql
   SELECT customers.nama_customer, payments.jumlah_pembayaran

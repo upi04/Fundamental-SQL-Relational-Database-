@@ -1,7 +1,7 @@
-### ** Subqueries**
+###  Subqueries
 A subquery is a query nested inside another query.
 
-#### **Example:** Retrieve customers with payments above the average amount.
+#### Example: Retrieve customers with payments above the average amount.
 ```sql
 SELECT nama_customer, jumlah_pembayaran
 FROM customers

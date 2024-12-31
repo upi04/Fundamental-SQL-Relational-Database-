@@ -1,4 +1,4 @@
-### ** System-Defined Functions**
+###  System-Defined Functions
 System-defined functions are pre-built SQL functions for string manipulation, date handling, and aggregate computations.
 
 #### **Common Functions:**

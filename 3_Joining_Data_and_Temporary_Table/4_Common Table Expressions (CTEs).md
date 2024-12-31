@@ -1,7 +1,7 @@
-### ** Common Table Expressions (CTEs)**
+###  Common Table Expressions (CTEs)
 CTEs simplify complex queries by allowing temporary naming of result sets.
 
-#### **Example:** Calculate total payments per customer and rank them by amount.
+#### Example: Calculate total payments per customer and rank them by amount.
 ```sql
 WITH total_payments AS (
     SELECT id_customer, SUM(jumlah_pembayaran) AS total_amount

@@ -1,4 +1,4 @@
-### ** Materialized Views**
+###  Materialized Views
 Materialized views store query results physically, improving performance for expensive computations.
 
 #### **Creating a Materialized View:**
