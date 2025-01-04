@@ -40,7 +40,7 @@ ORDER BY total_sessions DESC;
 ```
 ### 2. Calculating the Bounce Rate for a Specific Page
 In this example, we assume a bounce occurs if a session has only 1 pageview (i.e., the user exits after viewing just one page).
-```
+```sql
 
 -- Count how many pageviews each session has
 WITH session_pageview_count AS (
@@ -62,7 +62,7 @@ FROM session_pageview_count;
 ```
 ### 3. Conversion Funnel Analysis
 Determines the number of sessions that visit each funnel stage (e.g., home, product, cart, sale) and calculates the click-through rate from one page to the next.
-```
+```sql
 -- Example: checking whether each session visited a particular funnel page
 WITH funnel AS (
     SELECT 
