@@ -1,4 +1,4 @@
-### **Aggregation**
+### Aggregation
 Aggregation functions are used to summarize data, such as calculating totals or averages.
 
 #### **Example 1**: Calculate the total salary of all employees
@@ -17,7 +17,7 @@ FROM employee;
 
 ---
 
-### **Grouping**
+### Grouping
 Grouping is used to organize data into groups for aggregation.
 
 #### **Example 1**: Find the total salary by branch
