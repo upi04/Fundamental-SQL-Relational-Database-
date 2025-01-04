@@ -37,10 +37,10 @@ JOIN website_pageviews wp
     AND fp.first_time = wp.created_at
 GROUP BY wp.pageview_url
 ORDER BY total_sessions DESC;
-
+```
 ### 2. Calculating the Bounce Rate for a Specific Page
 In this example, we assume a bounce occurs if a session has only 1 pageview (i.e., the user exits after viewing just one page).
-
+```
 
 -- Count how many pageviews each session has
 WITH session_pageview_count AS (
@@ -59,8 +59,10 @@ SELECT
         2
     ) AS bounce_rate_percentage
 FROM session_pageview_count;
+```
 ### 3. Conversion Funnel Analysis
 Determines the number of sessions that visit each funnel stage (e.g., home, product, cart, sale) and calculates the click-through rate from one page to the next.
+```
 -- Example: checking whether each session visited a particular funnel page
 WITH funnel AS (
     SELECT 
@@ -80,11 +82,11 @@ SELECT
     SUM(visited_cart) AS cart_visitors,
     SUM(visited_sale) AS sale_visitors
 FROM funnel;
-
+```
 Conclusion
 By using queries that identify the Top Entry Page, calculate the Bounce Rate, and assess the Conversion Funnel, a company can pinpoint where users drop off and experiment (A/B Testing) to optimize their user journey. These analytics are crucial for improving website performance and ultimately increasing sales.
 
-
+```
 
 
 
