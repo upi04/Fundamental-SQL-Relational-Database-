@@ -51,37 +51,41 @@ We break down the main subjects or entities needed to fulfill the mission:
 ## 3. Database Diagrams
 
 ### 3.1. Product Management
-erDiagram
-    %% -------------------------
-    %% 1) PRODUCT MANAGEMENT
-    %% -------------------------
-    product {
-        int product_id PK
-        string product_name
-        string product_desc
-        decimal product_price
-        int product_stock
-        string product_image
-        int product_category_id FK
-        int product_brand_id FK
-    }
+flowchart LR
 
-    product_category {
-        int product_category_id PK
-        string category_name
-        string category_desc
-    }
+    %% Product Category Subgraph
+    subgraph Product_Category_Table
+    product_category[(product_category)]
+    product_category --> product_category_id((product_category_id PK))
+    product_category --> category_name((category_name))
+    product_category --> category_desc((category_desc))
+    end
 
-    product_brand {
-        int product_brand_id PK
-        string brand_name
-        string brand_desc
-    }
+    %% Product Brand Subgraph
+    subgraph Product_Brand_Table
+    product_brand[(product_brand)]
+    product_brand --> product_brand_id((product_brand_id PK))
+    product_brand --> brand_name((brand_name))
+    product_brand --> brand_desc((brand_desc))
+    end
 
-    %% Relationships:
-    %% product_category and product_brand each have many products.
-    product_category ||--|{ product : "has many"
-    product_brand ||--|{ product : "has many"
+    %% Product Subgraph
+    subgraph Product_Table
+    product[(product)]
+    product --> product_id((product_id PK))
+    product --> product_name((product_name))
+    product --> product_desc((product_desc))
+    product --> product_price((product_price decimal))
+    product --> product_stock((product_stock int))
+    product --> product_image((product_image string))
+    product --> product_category_id((product_category_id FK))
+    product --> product_brand_id((product_brand_id FK))
+    end
+
+    %% Relationships
+    product_category -- "1..* has many" --> product
+    product_brand -- "1..* has many" --> product
+
 
 **Explanation**:
 
@@ -89,7 +93,7 @@ erDiagram
 - Each product has `name`, `price`, `stock`, `image`, and a description.
 
 ### 3.2. Customer Management
-erDiagram
+
     %% -------------------------
     %% 2) CUSTOMER MANAGEMENT
     %% -------------------------
