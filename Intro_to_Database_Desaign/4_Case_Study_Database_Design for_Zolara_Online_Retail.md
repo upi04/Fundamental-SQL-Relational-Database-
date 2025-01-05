@@ -52,39 +52,22 @@ We break down the main subjects or entities needed to fulfill the mission:
 
 ### 3.1. Product Management
 flowchart LR
+    product --> product_category
+    product --> product_brand
 
-    %% Product Category Subgraph
-    subgraph Product_Category_Table
-    product_category[(product_category)]
-    product_category --> product_category_id((product_category_id PK))
-    product_category --> category_name((category_name))
-    product_category --> category_desc((category_desc))
-    end
+    product_category --> product_category_id
+    product_category --> category_name
+    product_category --> category_desc
 
-    %% Product Brand Subgraph
-    subgraph Product_Brand_Table
-    product_brand[(product_brand)]
-    product_brand --> product_brand_id((product_brand_id PK))
-    product_brand --> brand_name((brand_name))
-    product_brand --> brand_desc((brand_desc))
-    end
+    product_brand --> product_brand_id
+    product_brand --> brand_name
+    product_brand --> brand_desc
 
-    %% Product Subgraph
-    subgraph Product_Table
-    product[(product)]
-    product --> product_id((product_id PK))
-    product --> product_name((product_name))
-    product --> product_desc((product_desc))
-    product --> product_price((product_price decimal))
-    product --> product_stock((product_stock int))
-    product --> product_image((product_image string))
-    product --> product_category_id((product_category_id FK))
-    product --> product_brand_id((product_brand_id FK))
-    end
-
-    %% Relationships
-    product_category -- "1..* has many" --> product
-    product_brand -- "1..* has many" --> product
+    product --> product_id
+    product --> product_name
+    product --> product_desc
+    product --> product_price
+    product --> product_stock
 
 
 **Explanation**:
