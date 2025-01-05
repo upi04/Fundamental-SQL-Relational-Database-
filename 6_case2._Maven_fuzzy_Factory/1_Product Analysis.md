@@ -19,7 +19,7 @@ In the case of this new product, the company wants to evaluate the monthly sales
 ## 3. Case: Product Sales Analysis
 To see the total sales per transaction date (daily granularity), you can sum the orders on each date:
 #Query Daily/Transaction-Level Sales
----sql
+```sql
 SELECT 
     tgl_transaksi,
     SUM(jumlah_pemesanan) AS total_pemesanan
@@ -27,7 +27,7 @@ FROM product_sales
 WHERE ID_produk = 231  -- Filter by product if needed
 GROUP BY tgl_transaksi
 ORDER BY tgl_transaksi;
----
+```
 Example Output:
 | ID_customer | ID_produk | tgl_transaksi | jumlah_pemesanan |
 |-------------|-----------|---------------|-------------------|
@@ -40,7 +40,7 @@ From these transactions, data can be aggregated weekly or monthly to see the big
 
 ### 3.2. Monthly Aggregation for Trend Analysis
 Depending on your SQL dialect, you can group by the month. For example, in MySQL or PostgreSQL, you might use EXTRACT(MONTH FROM tgl_transaksi):
----sql
+```sql
 SELECT 
     EXTRACT(MONTH FROM tgl_transaksi) AS bulan,
     SUM(jumlah_pemesanan) AS total_pemesanan
@@ -48,7 +48,7 @@ FROM product_sales
 WHERE ID_produk = 231
 GROUP BY EXTRACT(MONTH FROM tgl_transaksi)
 ORDER BY bulan;
----
+```
 Example Output:
 | bulan | jumlah_pemesanan |
 |-------|-------------------|
@@ -71,7 +71,7 @@ According to the aggregation, the sales in:
 ## 4. Trend Observation
  ## Analyzing Trend Changes (Month-over-Month)
 If you want to see how much sales changed compared to the previous month, you can use a window function such as LAG() (supported in PostgreSQL, SQL Server, Oracle, etc.). This allows you to calculate a difference between the current month’s sales and the previous month’s sales.
----sql
+```sql
 WITH monthly_sales AS (
     SELECT
         DATE_TRUNC('month', tgl_transaksi)::DATE AS month_start,
@@ -89,7 +89,7 @@ FROM monthly_sales
 ORDER BY month_start;
 
 
----
+```
 
 ## 6. Insights from SQL Analysis
 - Daily/Transaction-Level Sales: Identify which specific dates have high or low sales.
