@@ -18,6 +18,27 @@ A good database design yields multiple benefits:
 
 ## 2. Database Design Stages
 
++------------------+          +---------------------+          +------------------+
+|    customer      |          |       order         |          |   order_detail   |
++------------------+          +---------------------+          +------------------+
+| customer_id (PK) |          | order_id (PK)       |          | order_detail_id  |
+| username         |          | customer_id (FK) -->|          | (PK)             |
+| firstName        |          | status             |          | order_id (FK) -->|
+| lastName         |          | created            |          | product_id (FK) ->|
+| email            |          | total_price        |          | quantity          |
+| phone            |          +---------------------+          +------------------+
++------------------+                  |
+                                     +---------------------+
+                                     |   order_shipment    |
+                                     +---------------------+
+                                     | shipment_id (PK)    |
+                                     | order_id (FK) ----->|
+                                     | tracking_number     |
+                                     | provider            |
+                                     | date                |
+                                     | status              |
+                                     +---------------------+
+
 Below is a general **diagram** or **workflow** for database design:
 
 1. **Mission Statement**  
