@@ -51,70 +51,47 @@ We break down the main subjects or entities needed to fulfill the mission:
 ## 3. Database Diagrams
 
 ### 3.1. Product Management
-flowchart LR
-    product --> product_category
-    product --> product_brand
-
-    product_category --> product_category_id
-    product_category --> category_name
-    product_category --> category_desc
-
-    product_brand --> product_brand_id
-    product_brand --> brand_name
-    product_brand --> brand_desc
-
-    product --> product_id
-    product --> product_name
-    product --> product_desc
-    product --> product_price
-    product --> product_stock
-
-
++-----------------+            +-------------------+           +-------------------+
+|   product       |            | product_category  |           | product_brand     |
++-----------------+            +-------------------+           +-------------------+
+| product_id      |            | product_category_id|           | product_brand_id  |
+| product_name    |            | category_name      |           | brand_name        |
+| product_desc    |            | category_desc      |           | brand_desc        |
+| product_price   |            +-------------------+           +-------------------+
+| product_stock   |
+| product_image   |
+| product_category_id -------->|
+| product_brand_id ------------>|
++-----------------+
 **Explanation**:
 
 - `product` is linked to `product_category` (via `product_category_id`) and `product_brand` (via `product_brand_id`).  
 - Each product has `name`, `price`, `stock`, `image`, and a description.
 
 ### 3.2. Customer Management
++------------------+           +--------------------+
+|   customer       |           |  customer_address  |
++------------------+           +--------------------+
+| customer_id      |           | address_id         |
+| username         |           | customer_id ------>|
+| first_name       |           | address            |
+| last_name        |           | province           |
+| email            |           | city               |
+| phone            |           | district           |
+| customer_address | --------> | postal_code        |
+| customer_payment | --------> | phone              |
++------------------+           +--------------------+
 
-    %% -------------------------
-    %% 2) CUSTOMER MANAGEMENT
-    %% -------------------------
-    customer {
-        int customer_id PK
-        string username
-        string first_name
-        string last_name
-        string email
-        string phone
-        %% Kolom customer_address dan customer_payment 
-        %% sering disimpan terpisah, jadi di ERD ini 
-        %% kita utamakan relasi ke tabel address dan payment.
-    }
-
-    customer_address {
-        int address_id PK
-        int customer_id FK
-        string address
-        string province
-        string city
-        string district
-        string postal_code
-        string phone
-    }
-
-    customer_payment {
-        int cust_payment_id PK
-        int customer_id FK
-        string payment_type
-        string provider
-        string account_number
-        string expire_date
-    }
-
-    %% Relationships:
-    customer ||--|{ customer_address : "has many"
-    customer ||--|{ customer_payment : "has many"
+                      +--------------------+
+                      |  customer_payment  |
+                      +--------------------+
+                      | cust_payment_id    |
+                      | customer_id ------>|
+                      | payment_type       |
+                      | provider           |
+                      | account_no         |
+                      | expire_date        |
+                      +--------------------+
 
 **Explanation**:
 
@@ -162,8 +139,7 @@ flowchart LR
 ## 4. Product Management
 
 ### 4.1. Entity Relationship Diagram
-flowchart LR
-  +------------------+          +-----------------------+
++------------------+          +-----------------------+
 |     product      |          |   product_category    |
 +------------------+          +-----------------------+
 | product_id (PK)  |          | product_category_id   |
