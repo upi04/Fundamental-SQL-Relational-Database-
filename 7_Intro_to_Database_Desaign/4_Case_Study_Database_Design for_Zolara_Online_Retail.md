@@ -51,6 +51,7 @@ We break down the main subjects or entities needed to fulfill the mission:
 ## 3. Database Diagrams
 
 ### 3.1. Product Management
+```
 +-----------------+            +-------------------+           +-------------------+
 |   product       |            | product_category  |           | product_brand     |
 +-----------------+            +-------------------+           +-------------------+
@@ -63,6 +64,8 @@ We break down the main subjects or entities needed to fulfill the mission:
 | product_category_id -------->|
 | product_brand_id ------------>|
 +-----------------+
+
+```
 **Explanation**:
 
 - `product` is linked to `product_category` (via `product_category_id`) and `product_brand` (via `product_brand_id`).  
