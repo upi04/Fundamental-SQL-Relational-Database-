@@ -72,6 +72,7 @@ We break down the main subjects or entities needed to fulfill the mission:
 - Each product has `name`, `price`, `stock`, `image`, and a description.
 
 ### 3.2. Customer Management
+```
 +------------------+           +--------------------+
 |   customer       |           |  customer_address  |
 +------------------+           +--------------------+
@@ -95,14 +96,14 @@ We break down the main subjects or entities needed to fulfill the mission:
                       | account_no         |
                       | expire_date        |
                       +--------------------+
-
+```
 **Explanation**:
 
 - `customer` can have multiple addresses (`customer_address`) and multiple payment methods (`customer_payment`).  
 - Fields like `username`, `email`, and `phone` are part of `customer` details.
 
 ### 3.3. Order and Order Detail
-
+```
 +------------------+           +--------------------+
 |     order        |           |    order_detail    |
 +------------------+           +--------------------+
@@ -112,13 +113,14 @@ We break down the main subjects or entities needed to fulfill the mission:
 | order_status     |           | quantity           |
 | order_created    |           +--------------------+
 +------------------+
-
+```
 **Explanation**:
 
 - An `order` belongs to a single `customer`.
 - The `order_detail` table captures each **product** in that order, allowing a one-to-many relationship (one order, many items).
 
 ### 3.4. Payment and Shipment
+```
 +--------------------+           +----------------------+
 |   order_payment    |           |    order_shipment    |
 +--------------------+           +----------------------+
@@ -131,7 +133,7 @@ We break down the main subjects or entities needed to fulfill the mission:
 | payment_date       |           +----------------------+
 | expire_date        |
 +--------------------+
-
+```
 **Explanation**:
 
 - **order_payment** stores payment info for an order, including status and date.  
@@ -142,6 +144,7 @@ We break down the main subjects or entities needed to fulfill the mission:
 ## 4. Product Management
 
 ### 4.1. Entity Relationship Diagram
+```
 +------------------+          +-----------------------+
 |     product      |          |   product_category    |
 +------------------+          +-----------------------+
@@ -158,7 +161,7 @@ We break down the main subjects or entities needed to fulfill the mission:
                                | name                |
                                | description         |
                                +-----------------------+
-
+```
 **Explanation**:
 - **`product`** has a **many-to-one** relationship to both **`product_category`** and **`product_brand`**. 
 - This means multiple products can share the same category or brand.
@@ -169,7 +172,7 @@ We break down the main subjects or entities needed to fulfill the mission:
 ## 5. Customer Management
 
 ### 5.1. Entity Relationship Diagram
-
+```
 +------------------+          +-----------------------+
 |    customer      |          |  customer_address     |
 +------------------+          +-----------------------+
@@ -194,7 +197,7 @@ We break down the main subjects or entities needed to fulfill the mission:
 | expire_date           |
 +-----------------------+
 
-
+```
 **Explanation**:
 - **`customer`** can have multiple **`customer_address`** records (one-to-many).
 - **`customer`** can also have multiple **`customer_payment`** options (one-to-many).
@@ -204,7 +207,7 @@ We break down the main subjects or entities needed to fulfill the mission:
 ## 6. Shop Management
 
 ### 6.1. Diagram: Order, Order Detail, and Related Entities
-
+```
 +------------------+          +---------------------+          +------------------+
 |    customer      |          |       order         |          |   order_detail   |
 +------------------+          +---------------------+          +------------------+
@@ -302,7 +305,7 @@ We break down the main subjects or entities needed to fulfill the mission:
 | expire_date         |          | status              |
 +---------------------+          +---------------------+
 
-
+```
 ## 7. Determining Table Relationships
 
 We can divide them into three main areas:
