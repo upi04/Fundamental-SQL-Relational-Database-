@@ -48,7 +48,7 @@ Identify the **tables**, **fields**, and **primary keys**, as well as the **purp
 | - produk         |                     |                    |                             |
 | - total_harga    |                     |                    |                             |
 
-*(Adjust fields and names as needed.)*
+
 
 ### 2.3. Determine Table Relationships
 
@@ -106,7 +106,7 @@ MONTH(tgl_transaksi): Extracts the month from the tgl_transaksi column.
 SUM(jumlah_pembayaran): Aggregates total payment amounts.
 GROUP BY bulan: Groups the data by month.
 
-
+```
 
 Thought for a second
 markdown
@@ -218,6 +218,7 @@ View Name: total_transaksi_bulanan
 MONTH(tgl_transaksi): Extracts the month from the tgl_transaksi column.
 SUM(jumlah_pembayaran): Aggregates total payment amounts.
 GROUP BY bulan: Groups the data by month.
+```
 ## 4. Summary
 Database Design involves:
 
