@@ -18,6 +18,7 @@ A good database design yields multiple benefits:
 
 ## 2. Database Design Stages
 
+
 Below is a general **diagram** or **workflow** for database design:
 
 1. **Mission Statement**  
