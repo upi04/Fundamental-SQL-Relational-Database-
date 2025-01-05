@@ -51,47 +51,83 @@ We break down the main subjects or entities needed to fulfill the mission:
 ## 3. Database Diagrams
 
 ### 3.1. Product Management
-+-----------------+            +-------------------+           +-------------------+
-|   product       |            | product_category  |           | product_brand     |
-+-----------------+            +-------------------+           +-------------------+
-| product_id      |            | product_category_id|           | product_brand_id  |
-| product_name    |            | category_name      |           | brand_name        |
-| product_desc    |            | category_desc      |           | brand_desc        |
-| product_price   |            +-------------------+           +-------------------+
-| product_stock   |
-| product_image   |
-| product_category_id -------->|
-| product_brand_id ------------>|
-+-----------------+
+erDiagram
+    %% -------------------------
+    %% 1) PRODUCT MANAGEMENT
+    %% -------------------------
+    product {
+        int product_id PK
+        string product_name
+        string product_desc
+        decimal product_price
+        int product_stock
+        string product_image
+        int product_category_id FK
+        int product_brand_id FK
+    }
+
+    product_category {
+        int product_category_id PK
+        string category_name
+        string category_desc
+    }
+
+    product_brand {
+        int product_brand_id PK
+        string brand_name
+        string brand_desc
+    }
+
+    %% Relationships:
+    %% product_category and product_brand each have many products.
+    product_category ||--|{ product : "has many"
+    product_brand ||--|{ product : "has many"
+
 **Explanation**:
 
 - `product` is linked to `product_category` (via `product_category_id`) and `product_brand` (via `product_brand_id`).  
 - Each product has `name`, `price`, `stock`, `image`, and a description.
 
 ### 3.2. Customer Management
-+------------------+           +--------------------+
-|   customer       |           |  customer_address  |
-+------------------+           +--------------------+
-| customer_id      |           | address_id         |
-| username         |           | customer_id ------>|
-| first_name       |           | address            |
-| last_name        |           | province           |
-| email            |           | city               |
-| phone            |           | district           |
-| customer_address | --------> | postal_code        |
-| customer_payment | --------> | phone              |
-+------------------+           +--------------------+
+erDiagram
+    %% -------------------------
+    %% 2) CUSTOMER MANAGEMENT
+    %% -------------------------
+    customer {
+        int customer_id PK
+        string username
+        string first_name
+        string last_name
+        string email
+        string phone
+        %% Kolom customer_address dan customer_payment 
+        %% sering disimpan terpisah, jadi di ERD ini 
+        %% kita utamakan relasi ke tabel address dan payment.
+    }
 
-                      +--------------------+
-                      |  customer_payment  |
-                      +--------------------+
-                      | cust_payment_id    |
-                      | customer_id ------>|
-                      | payment_type       |
-                      | provider           |
-                      | account_no         |
-                      | expire_date        |
-                      +--------------------+
+    customer_address {
+        int address_id PK
+        int customer_id FK
+        string address
+        string province
+        string city
+        string district
+        string postal_code
+        string phone
+    }
+
+    customer_payment {
+        int cust_payment_id PK
+        int customer_id FK
+        string payment_type
+        string provider
+        string account_number
+        string expire_date
+    }
+
+    %% Relationships:
+    customer ||--|{ customer_address : "has many"
+    customer ||--|{ customer_payment : "has many"
 
 **Explanation**:
 
