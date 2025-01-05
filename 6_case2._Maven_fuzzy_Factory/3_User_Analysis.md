@@ -42,7 +42,7 @@ A user with total_sessions > 1 indicates a repeat visitor.
 
 ###1.2. Distinguishing New vs. Repeat Sessions
 If your data includes a column like is_repeat_session (0 = new, 1 = repeat), we can split the counts:
----sql
+```sql
 SELECT
     user_id,
     SUM(CASE WHEN is_repeat_session = 0 THEN 1 ELSE 0 END) AS total_new_sessions,
@@ -50,7 +50,7 @@ SELECT
 FROM website_sessions
 GROUP BY user_id
 ORDER BY total_repeat_sessions DESC;
----
+```
 Explanation:
 
 Uses a conditional sum to separately count new vs. repeat sessions for each user.
@@ -61,7 +61,7 @@ To understand if repeat visitors are more likely to make a purchase, we can calc
 
 website_sessions.website_session_id matches orders.website_session_id (one-to-many or one-to-one relationship).
 is_repeat_session = 0 means new session, = 1 means repeat session.
----sql
+```sql
 SELECT
     ws.is_repeat_session,
     COUNT(DISTINCT ws.website_session_id) AS total_sessions,
@@ -75,7 +75,7 @@ FROM website_sessions ws
 LEFT JOIN orders o 
     ON ws.website_session_id = o.website_session_id
 GROUP BY ws.is_repeat_session;
----
+```
 Explanation
 ws.is_repeat_session: Groups by whether the session was repeat or new.
 COUNT(DISTINCT ws.website_session_id): Number of (unique) sessions in that group.
@@ -86,7 +86,7 @@ Conversion Rate = \frac{\text{total_orders}}{\text{total_sessions}} \times 100\%
 To understand how quickly users come back, we can measure the time gap between a user’s first session and their subsequent sessions. This often involves a self-join or window function.
 
 ### 3.1. Example with Window Functions (PostgreSQL/SQL Server)
----sql
+```sql
 WITH session_times AS (
     SELECT
         user_id,
@@ -104,7 +104,7 @@ JOIN session_times st2
     ON st1.user_id = st2.user_id
    AND st1.session_index + 1 = st2.session_index
 ORDER BY st1.user_id, st1.created_at;
----
+```
 Explanation
 ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY created_at): Assigns a sequential number to each session per user, based on the session’s time.
 st1 is the “current session,” and st2 is the “next session.”
