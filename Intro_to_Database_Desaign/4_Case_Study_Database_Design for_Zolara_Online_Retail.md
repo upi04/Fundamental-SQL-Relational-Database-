@@ -139,22 +139,24 @@ We break down the main subjects or entities needed to fulfill the mission:
 ## 4. Product Management
 
 ### 4.1. Entity Relationship Diagram
-+------------------+          +-----------------------+
-|     product      |          |   product_category    |
-+------------------+          +-----------------------+
-| product_id (PK)  |          | product_category_id   |
-| product_category_id (FK) -->| (PK)                 |
-| product_brand_id (FK) ----->| name                 |
-| name            |          | description          |
-| description     |          +-----------------------+
-| price           |
-| stock           |          +-----------------------+
-| image           |          |   product_brand       |
-+------------------+          +-----------------------+
-                               | product_brand_id (PK)|
-                               | name                |
-                               | description         |
-                               +-----------------------+
+flowchart LR
+    product --> product_category
+    product --> product_brand
+
+    product_category --> product_category_id
+    product_category --> category_name
+    product_category --> category_desc
+
+    product_brand --> product_brand_id
+    product_brand --> brand_name
+    product_brand --> brand_desc
+
+    product --> product_id
+    product --> product_name
+    product --> product_desc
+    product --> product_price
+    product --> product_stock
+
 
 **Explanation**:
 - **`product`** has a **many-to-one** relationship to both **`product_category`** and **`product_brand`**. 
