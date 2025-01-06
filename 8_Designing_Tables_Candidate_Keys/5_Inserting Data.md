@@ -134,7 +134,7 @@ After multiple inserts, check again with:
 SELECT * FROM product_category;
 Example Output (sample data):
 ```
-csharp
+```sql
 
  product_category_id |   name       | description
 ---------------------+--------------+-----------------------------------------
@@ -143,6 +143,7 @@ csharp
                    3 | Trousers     | Trouser is an outer garment ...
                    4 | Skirt        | A skirt is the lower part of a ...
                    5 | Outerwear    | Outerwear is clothing and ...
+```
 (5 rows)
 9. General INSERT Syntax
 In summary, the general form of an INSERT statement is:
