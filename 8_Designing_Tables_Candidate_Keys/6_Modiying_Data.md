@@ -1,44 +1,4 @@
-# Module: Inserting, Modifying, and Deleting Data (DML)
 
-This module explains **Data Manipulation Language (DML)** commands in SQL: how to **insert** new records, **update** existing records, and **delete** unwanted records from a table. It uses examples from a hypothetical `product_category` table in a PostgreSQL database.
-
----
-
-## 1. Overview: DML Commands
-
-### 1.1. `INSERT`
-- Adds new rows to a table.
-
-### 1.2. `UPDATE`
-- Modifies existing rows in a table.
-
-### 1.3. `DELETE`
-- Removes existing rows from a table.
-
-All these statements typically involve a **WHERE** clause to filter which rows to manipulate.
-
----
-
-## 2. Inserting Data
-
-### 2.1. Scenario: `product_category` Table
-
-**Schema Example**:
-- **product_category_id**: integer (primary key, possibly `SERIAL`)
-- **name**: varchar(255)
-- **description**: text
-
-#### 2.1.1. Case 1: Insert a Single Row (Specifying All Columns)
-
-```sql
-INSERT INTO product_category
-VALUES (1, 'Shirt', 'A shirt is a piece of clothing worn on the upper part of your body with a collar, sleeves, and buttons down the front.');
-```
-
-
-Thought for a second
-markdown
-Copy code
 # Module: Inserting, Modifying, and Deleting Data (DML)
 
 This module explains **Data Manipulation Language (DML)** commands in SQL: how to **insert** new records, **update** existing records, and **delete** unwanted records from a table. It uses examples from a hypothetical `product_category` table in a PostgreSQL database.
